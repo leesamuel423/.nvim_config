@@ -1,32 +1,45 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+vim.scriptencoding = "utf-8"
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 
-local opt = vim.opt
+vim.opt.number = true
 
-opt.relativenumber = true -- relative line number
-opt.number = true -- show absolute line number on cursor line
-opt.scrolloff = 8 -- show 8 lines above/below cursor line
-opt.tabstop = 2 -- tabstop
-opt.shiftwidth = 2 -- shiftwidth
-opt.expandtab = true -- expandtab
-opt.autoindent = true -- autoindent
+vim.opt.title = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.hlsearch = true
+vim.opt.backup = false
+vim.opt.showcmd = true
+vim.opt.cmdheight = 1
+vim.opt.laststatus = 2
+vim.opt.expandtab = true
+vim.opt.scrolloff = 10
 
-opt.wrap = false -- don't wrap lines
+vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+vim.opt.smartcase = true
+vim.opt.smarttab = true
+vim.opt.breakindent = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.wrap = false -- No Wrap lines
+vim.opt.backspace = { "start", "eol", "indent" }
+vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
+vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.opt.splitbelow = true -- Put new windows below current
+vim.opt.splitright = true -- Put new windows right of current
+vim.opt.splitkeep = "cursor"
+vim.opt.mouse = ""
+vim.opt.cursorline = true -- highlight current line
 
-opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- ignore case when searching lowercase only
+vim.opt.termguicolors = true -- enable 24-bit RGB colors
+vim.opt.background = "dark" -- dark background
+vim.opt.signcolumn = "yes" -- always show sign column
+vim.opt.colorcolumn = "80" -- add line at 80 columns
 
-opt.cursorline = true -- highlight current line
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
-opt.termguicolors = true -- enable 24-bit RGB colors
-opt.background = "dark" -- dark background
-opt.signcolumn = "yes" -- always show sign column
-opt.colorcolumn = "80" -- add line at 80 columns
-
-opt.backspace = "indent,eol,start" -- allow backspacing over everything in insert mode
-opt.splitright = true -- vertical split to the right
-opt.splitbelow = true -- horizontal split to the bottom
-
-opt.swapfile = false -- disable swapfile
-opt.updatetime = 50 -- faster completion
+if vim.fn.has("nvim-0.8") == 1 then
+  vim.opt.cmdheight = 0
+end
