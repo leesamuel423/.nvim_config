@@ -1,6 +1,3 @@
-local discipline = require("craftzdog.discipline")
-discipline.cowboy()
-
 vim.g.mapleader = " "
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap

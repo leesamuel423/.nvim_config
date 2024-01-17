@@ -1,6 +1,6 @@
 return {
   {
-    enabled = false,
+    enabled = true,
     "folke/flash.nvim",
     ---@type Flash.Config
     opts = {
@@ -15,7 +15,7 @@ return {
 
   {
     "echasnovski/mini.hipatterns",
-    event = "BufReadPre",
+    event = "bufreadpre",
     opts = {
       highlighters = {
         hsl_color = {

@@ -32,9 +32,9 @@ vim.opt.mouse = ""
 vim.opt.cursorline = true -- highlight current line
 
 vim.opt.termguicolors = true -- enable 24-bit RGB colors
-vim.opt.background = "dark" -- dark background
 vim.opt.signcolumn = "yes" -- always show sign column
 vim.opt.colorcolumn = "80" -- add line at 80 columns
+vim.opt.list = false --make dash line placeholder go away
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
