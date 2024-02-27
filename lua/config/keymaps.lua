@@ -15,15 +15,14 @@ keymap.set("n", "<C-a>", "gg<S-v>G") -- select all
 keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
 keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 
--- PYTHON KEYMAPS
-keymap.set("i", '"""', '""""""<Left><Left><Left><CR><CR><Up><End>', { noremap = true, silent = true }) -- mapping for triple in python comments
-keymap.set("i", "'''", "''''''<Left><Left><Left>", { noremap = true, silent = true }) -- mapping for triple single quotes for python
+-- QOL KEYMAPS
+keymap.set("i", "--->", "------------><Space><------------<ESC>12hi", opts) --header shortcut
+
+keymap.set("i", '"""', '""""""<Left><Left><Left><CR><CR><Up><End>', opts) -- mapping for triple in python comments
+keymap.set("i", "'''", "''''''<Left><Left><Left>", opts) -- mapping for triple single quotes for python
+keymap.set("i", "```", "``````<Left><Left><Left><CR><CR><Up><End>", opts) -- mapping for triple in python comments
 
 -- Diagnostics
-keymap.set("n", "<C-j>", function()
+keymap.set("n", "<C-n>", function()
   vim.diagnostic.goto_next()
 end, opts)
-
-keymap.set("n", "<leader>i", function()
-  require("craftzdog.lsp").toggleInlayHints()
-end)

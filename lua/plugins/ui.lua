@@ -56,7 +56,7 @@ return {
   {
     "rcarriga/nvim-notify",
     opts = {
-      timeout = 5000,
+      timeout = 1000,
     },
   },
 
@@ -66,7 +66,7 @@ return {
     event = "VeryLazy",
     opts = function(_, opts)
       opts.scroll = {
-        enable = false,
+        enable = true,
       }
     end,
   },

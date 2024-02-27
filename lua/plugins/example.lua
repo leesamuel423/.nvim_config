@@ -199,6 +199,7 @@ return {
         "flake8",
         "tailwindcss-language-server",
         "typescript-language-server",
+        "debugpy",
       },
     },
   },
