@@ -1,28 +1,30 @@
-vim.g.mapleader = " "
 local opts = { noremap = true, silent = true }
-local keymap = vim.keymap
 
--- GENERAL KEYMAPS
+-- Shorten for convenience
+local keymap = vim.keymap.set
 
-keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jk" }) -- use jj to exit insert mode
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" }) -- nh to clear search highlights
-keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- move lines down
-keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- move lines up
-keymap.set("i", "<C-c>", "<Esc>") -- set <C-c> to be <Esc>
-keymap.set("n", "<C-a>", "gg<S-v>G") -- select all
+keymap("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
 
--- Disable continuations
-keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
-keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
+-- Window Navigation --
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
 
--- QOL KEYMAPS
-keymap.set("i", "--->", "------------><Space><------------<ESC>12hi", opts) --header shortcut
+-- Resize with arrows
+keymap("n", "<C-7>", ":resize -2<CR>", opts)
+keymap("n", "<C-8>", ":resize +2<CR>", opts)
+keymap("n", "<C-9>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-0>", ":vertical resize +2<CR>", opts)
 
-keymap.set("i", '"""', '""""""<Left><Left><Left><CR><CR><Up><End>', opts) -- mapping for triple in python comments
-keymap.set("i", "'''", "''''''<Left><Left><Left>", opts) -- mapping for triple single quotes for python
-keymap.set("i", "```", "``````<Left><Left><Left><CR><CR><Up><End>", opts) -- mapping for triple in python comments
+-- Move text up and down --
+keymap("v", "J", ":m '>+1<CR>gv=gv")
+keymap("v", "K", ":m '<-2<CR>gv=gv")
 
--- Diagnostics
-keymap.set("n", "<C-n>", function()
-  vim.diagnostic.goto_next()
-end, opts)
+-- Misc. --
+keymap("i", "jj", "<ESC>", { desc = "Exit insert mode with jk" }) -- use jj to exit insert mode
+keymap("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" }) -- nh to clear search highlights
+keymap("i", "<C-c>", "<Esc>") -- set <C-c> to be <Esc>
+keymap("n", "<C-q>", "gg<S-v>G") -- select all
+-- keymap("n", "<leader>pv", vim.cmd.Ex) -- go back to explorer

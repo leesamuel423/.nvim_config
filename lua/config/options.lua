@@ -7,6 +7,7 @@ vim.opt.number = true
 vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.opt.backup = false
 vim.opt.showcmd = true
@@ -36,10 +37,15 @@ vim.opt.signcolumn = "yes" -- always show sign column
 vim.opt.colorcolumn = "80" -- add line at 80 columns
 vim.opt.list = false --make dash line placeholder go away
 
+vim.opt.clipboard = "unnamedplus"
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.timeoutlen = 300
+vim.opt.updatetime = 300
+vim.opt.undofile = true
+
+vim.opt.cmdheight = 2
+vim.opt.pumheight = 10
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
-
-if vim.fn.has("nvim-0.8") == 1 then
-  vim.opt.cmdheight = 0
-end
