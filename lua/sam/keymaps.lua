@@ -27,4 +27,4 @@ keymap("i", "jj", "<ESC>", { desc = "Exit insert mode with jk" }) -- use jj to e
 keymap("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" }) -- nh to clear search highlights
 keymap("i", "<C-c>", "<Esc>") -- set <C-c> to be <Esc>
 keymap("n", "<C-q>", "gg<S-v>G") -- select all
--- keymap("n", "<leader>pv", vim.cmd.Ex) -- go back to explorer
+keymap("n", "<leader>pv", vim.cmd.Ex) -- go back to explorer
