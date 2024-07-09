@@ -75,7 +75,7 @@ function M.config()
       },
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
-      ["<CR>"] = cmp.mapping.confirm { select = true },
+      ["<C-CR>"] = cmp.mapping.confirm { select = true },
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -107,40 +107,13 @@ function M.config()
         "s",
       }),
     },
-    formatting = {
-      fields = { "kind", "abbr", "menu" },
-      format = function(entry, vim_item)
-        vim_item.kind = icons.kind[vim_item.kind]
-        vim_item.menu = ({
-          nvim_lsp = "",
-          nvim_lua = "",
-          luasnip = "",
-          buffer = "",
-          path = "",
-          emoji = "",
-        })[entry.source.name]
-
-        if entry.source.name == "emoji" then
-          vim_item.kind = icons.misc.Smiley
-          vim_item.kind_hl_group = "CmpItemKindEmoji"
-        end
-
-        if entry.source.name == "cmp_tabnine" then
-          vim_item.kind = icons.misc.Robot
-          vim_item.kind_hl_group = "CmpItemKindTabnine"
-        end
-
-        return vim_item
-      end,
-    },
     sources = {
+      { name = "nvim_lsp", priority = 500},
       { name = "copilot" },
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "cmp_tabnine" },
+      { name = "path"},
+      { name = "luasnip", priority = 1000},
+      { name = "buffer"},
       { name = "nvim_lua" },
-      { name = "buffer" },
-      { name = "path" },
       { name = "calc" },
       { name = "emoji" },
     },
@@ -164,4 +137,5 @@ function M.config()
 end
 
 return M
+
 

@@ -1,8 +1,5 @@
 local M = {
   "nvim-lualine/lualine.nvim",
-  dependencies = {
-    "AndreM222/copilot-lualine",
-  },
 }
 
 function M.config()
@@ -17,7 +14,7 @@ function M.config()
       lualine_b = { "branch" },
       lualine_c = { "diagnostics" },
       lualine_x = { "diff" },
-      lualine_y = {"copilot", "searchcount"},
+      lualine_y = {"searchcount"},
       lualine_z = {"filename"},
     },
     extensions = { "quickfix", "man", "fugitive" },
