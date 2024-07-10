@@ -9,6 +9,7 @@ local M = {
     "marilari88/neotest-vitest",
     "nvim-neotest/neotest-python",
     "nvim-neotest/neotest-plenary",
+    "nvim-neotest/nvim-nio",
     "rouge8/neotest-rust",
     "lawrence-laz/neotest-zig",
     "rcasia/neotest-bash",

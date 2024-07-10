@@ -1,15 +1,8 @@
 local M = {
-  "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPost", "BufNewFile" },
-  build = ":TSUpdate",
+    "nvim-treesitter/nvim-treesitter",
+    build = function()
+        require("nvim-treesitter.install").update({ with_sync = true })()
+    end,
 }
 
-function M.config()
-  require("nvim-treesitter.configs").setup {
-    ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "html", "javascript", "python", "java", "typescript", "tsx", "regex", "rust" },
-    highlight = { enable = true },
-    indent = { enable = true },
-  }
-end
-
-return M
+return { M }
