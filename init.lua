@@ -29,8 +29,9 @@ spec "sam.toggleterm"
 spec "sam.cmp"
 spec "sam.lspconfig"
 spec "sam.undotree"
-spec "sam.colorizer"
 spec "sam.oil"
+spec "sam.markdown"
+-- spec "sam.mini"
 
 
 

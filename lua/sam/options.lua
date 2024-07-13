@@ -30,7 +30,7 @@ vim.opt.wildignore:append({ "*/node_modules/*" })
 vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new windows right of current
 vim.opt.splitkeep = "cursor"
--- vim.opt.mouse = ""
+vim.opt.mouse = ""
 vim.opt.cursorline = true -- highlight current line
 
 vim.opt.termguicolors = true -- enable 24-bit RGB colors

@@ -19,12 +19,15 @@ local M = {
   "aktersnurra/no-clown-fiesta.nvim",
   lazy = false,
   priority = 1000,
-  opts = {}
 }
 
 function M.config()
 --   vim.cmd.colorscheme "solarized-osaka"
 --   vim.cmd.colorscheme "gruvbox"
+  require("no-clown-fiesta").setup({
+    transparent=true
+
+  })
   vim.cmd.colorscheme "no-clown-fiesta"
 end
 
