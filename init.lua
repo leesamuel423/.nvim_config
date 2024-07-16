@@ -31,6 +31,7 @@ spec "sam.lspconfig"
 spec "sam.undotree"
 spec "sam.oil"
 spec "sam.markdown"
+spec "sam.colorizer"
 -- spec "sam.mini"
 
 
