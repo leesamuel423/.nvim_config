@@ -3,6 +3,7 @@ require "sam.options"
 require "sam.keymaps"
 require "sam.autocmds"
 
+spec "sam.dashboard"
 spec "sam.colorscheme"
 spec "sam.treesitter"
 spec "sam.whichkey"
@@ -33,6 +34,7 @@ spec "sam.oil"
 spec "sam.markdown"
 spec "sam.colorizer"
 -- spec "sam.mini"
+spec "sam.easy-align"
 
 
 
