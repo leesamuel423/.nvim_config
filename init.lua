@@ -45,7 +45,7 @@ vim.api.nvim_set_hl(0, "DashboardDesc", { fg = "#c084fc" }) -- description
 vim.api.nvim_set_hl(0, "DashboardKey", { fg = "#f0abfc" }) -- key
 vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#f9a8d4" }) -- bottom
 
-vim.o.laststatus = 0
+vim.o.laststatus = 3
 
 -- set line number colors
 vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#737373", bold = false })

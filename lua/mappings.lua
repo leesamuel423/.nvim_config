@@ -3,6 +3,7 @@ require "nvchad.mappings"
 -- add yours here
 
 local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
@@ -12,10 +13,10 @@ vim.g.mapleader = " "
 map("i", "jj", "<ESC>")
 
 -- map Ctrl+hjkl to arrow keys in insert mode
-vim.api.nvim_set_keymap('i', '<C-h>', '<Left>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-j>', '<Down>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-k>', '<Up>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<C-l>', '<Right>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-h>', '<Left>', opts)
+vim.api.nvim_set_keymap('i', '<C-j>', '<Down>', opts)
+vim.api.nvim_set_keymap('i', '<C-k>', '<Up>', opts)
+vim.api.nvim_set_keymap('i', '<C-l>', '<Right>', opts)
 
 -- terms stay in middle
 map("n", "n", "nzz")

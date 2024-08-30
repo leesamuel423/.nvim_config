@@ -2,7 +2,7 @@
 return {
   { "kyazdani42/nvim-tree.lua", enabled = false },
   {
-    "nvim-telescope/telescope.nvim", 
+    "nvim-telescope/telescope.nvim",
     config = function()
       local actions = require("telescope.actions")
       require("telescope").setup {
