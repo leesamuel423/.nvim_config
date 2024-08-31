@@ -1,33 +1,12 @@
-local M = {
+return {
   "folke/which-key.nvim",
-}
-
-function M.config()
-  local mappings = {
-    q = { "<cmd>confirm q<CR>", "Quit" },
-    h = { "<cmd>nohlsearch<CR>", "NOHL" },
-    [";"] = { "<cmd>tabnew | terminal<CR>", "Term" },
-    v = { "<cmd>vsplit<CR>", "Split" },
-    b = { name = "Buffers" },
-    d = { name = "Debug" },
-    f = { name = "Find" },
-    g = { name = "Git" },
-    l = { name = "LSP" },
-    p = { name = "Plugins" },
-    t = { name = "Test" },
-    a = {
-      name = "Tab",
-      n = { "<cmd>$tabnew<cr>", "New Empty Tab" },
-      N = { "<cmd>tabnew %<cr>", "New Tab" },
-      o = { "<cmd>tabonly<cr>", "Only" },
-      h = { "<cmd>-tabmove<cr>", "Move Left" },
-      l = { "<cmd>+tabmove<cr>", "Move Right" },
-    },
-    T = { name = "Treesitter" },
-  }
-
-  local which_key = require "which-key"
-  which_key.setup {
+  commit = '4433e5e',
+  event = "VimEnter",
+  init = function ()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+  end,
+  opts = {
     plugins = {
       marks = true,
       registers = true,
@@ -36,17 +15,17 @@ function M.config()
         suggestions = 20,
       },
       presets = {
-        operators = false,
+        operators = true,
         motions = false,
         text_objects = false,
-        windows = false,
-        nav = false,
-        z = false,
-        g = false,
+        windows = true,
+        nav = true,
+        z = true,
+        g = true,
       },
     },
     window = {
-      border = "none",
+      border = "single",
       position = "bottom",
     },
     ignore_missing = true,
@@ -56,15 +35,41 @@ function M.config()
       buftypes = {},
       filetypes = { "TelescopePrompt" },
     },
-  }
+    triggers = "auto",
+    triggers_blacklist = {
+      i = {"j", "k"},
+      v = {"j", "k"},
+    },
+  },
+  config = function (_, opts)
+    local wk = require("which-key")
 
-  local opts = {
-    mode = "n", -- NORMAL mode
-    prefix = "<leader>",
-  }
+    wk.setup(opts)
 
-  which_key.register(mappings, opts)
-end
-
-return M
+    local mappings = {
+      ["<leader>"] = {
+        ["q"] = { "<cmd>confirm q<CR>", "Quit"},
+        ["h"] = { "<cmd>nohlsearch<CR>", "NOHL" },
+        [";"] = { "<cmd>tabnew | terminal<CR>", "Term" },
+        ["v"] = { "<cmd>vsplit<CR>", "Split" },
+        ["b"] = { name = "Buffers" },
+        ["d"] = { name = "Debug" },
+        ["f"] = { name = "Find" },
+        ["g"] = { name = "Git" },
+        ["p"] = { name = "Plugins" },
+        ["t"] = { name = "Test" },
+        ["a"] = {
+          name = "Tab",
+          ["n"] = { "<cmd>$tabnew<cr>", "New Empty Tab" },
+          ["N"] = { "<cmd>tabnew %<cr>", "New Tab" },
+          ["o"] = { "<cmd>tabonly<cr>", "Only" },
+          ["h"] = { "<cmd>-tabmove<cr>", "Move Left" },
+          ["l"] = { "<cmd>+tabmove<cr>", "Move Right" },
+        },
+        ["T"] = { name = "Treesitter" },
+      }
+    }
+    wk.register(mappings)
+  end,
+}
 

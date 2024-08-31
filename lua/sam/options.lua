@@ -1,52 +1,55 @@
-vim.scriptencoding = "utf-8"
-vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
+local opt = vim.opt
 
-vim.opt.number = true
-vim.opt.relativenumber = true
+-- Appearance
+opt.number = true          -- Show line numbers
+opt.relativenumber = true  -- Show relative line numbers
+opt.cursorline = true      -- Highlight the current line
+opt.termguicolors = true   -- Enable 24-bit RGB color in the TUI
+opt.background = "dark"    -- Set the background to dark
+opt.signcolumn = "yes"     -- Always show the sign column
+opt.colorcolumn = "80"     -- Show a vertical line at column 80
+opt.fillchars = { eob = " " } -- Change the character used for empty lines at the end of the buffer
+opt.laststatus = 2         -- Always show the status line
+opt.cmdheight = 1          -- Set the command-line height to 1 line
+opt.showcmd = true         -- Show (partial) command in the last line of the screen
+opt.scrolloff = 10         -- Minimum number of lines to keep above and below the cursor
 
-vim.opt.title = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = true
-vim.opt.backup = false
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
-vim.opt.laststatus = 2
-vim.opt.expandtab = true
-vim.opt.scrolloff = 10
+-- Indentation and Formatting
+opt.tabstop = 2            -- Number of spaces a tab counts for
+opt.shiftwidth = 2         -- Number of spaces to use for each step of autoindent
+opt.expandtab = true       -- Convert tabs to spaces
+opt.autoindent = true      -- Copy indent from current line when starting a new line
+opt.smartindent = true     -- Do smart autoindenting when starting a new line
+opt.breakindent = true     -- Wrapped lines will be visually indented
+opt.smarttab = true        -- Insert blanks according to 'shiftwidth'
+opt.wrap = true            -- Wrap long lines
 
-vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
-vim.opt.smartcase = true
-vim.opt.smarttab = true
-vim.opt.breakindent = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.wrap = true -- No Wrap lines
-vim.opt.backspace = { "start", "eol", "indent" }
-vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
-vim.opt.wildignore:append({ "*/node_modules/*" })
-vim.opt.splitbelow = true -- Put new windows below current
-vim.opt.splitright = true -- Put new windows right of current
-vim.opt.splitkeep = "cursor"
-vim.opt.mouse = ""
-vim.opt.cursorline = true -- highlight current line
+-- Search
+opt.hlsearch = true        -- Highlight all matches of the last search pattern
+opt.ignorecase = true      -- Ignore case in search patterns
+opt.smartcase = true       -- Override 'ignorecase' if search pattern contains uppercase characters
 
-vim.opt.termguicolors = true -- enable 24-bit RGB colors
-vim.opt.signcolumn = "yes" -- always show sign column
-vim.opt.colorcolumn = "80" -- add line at 80 columns
-vim.opt.list = false --make dash line placeholder go away
+-- File Handling
+opt.backup = false         -- Don't make a backup before overwriting a file
+opt.swapfile = false       -- Don't use a swapfile for the buffer
+opt.undofile = true        -- Save undo history to a file
 
-vim.opt.clipboard = "unnamedplus"
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.timeoutlen = 300
-vim.opt.updatetime = 300
-vim.opt.undofile = true
+-- File Finding
+opt.path:append({ "**" })  -- Search down into subfolders for file finding
+opt.wildignore:append({ "*/node_modules/*" }) -- Ignore node_modules in file and directory matching
 
-vim.opt.cmdheight = 2
-vim.opt.pumheight = 10
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
+-- Editing
+opt.backspace = "indent,eol,start" -- Allow backspacing over autoindent, line breaks, and start of insert
+opt.clipboard:append("unnamedplus") -- Use the system clipboard
+opt.timeoutlen = 300       -- Time in milliseconds to wait for a mapped sequence to complete
+opt.updatetime = 300       -- Decrease update time for better user experience
+
+-- Window Splitting
+opt.splitright = true      -- Put new windows right of the current one
+opt.splitbelow = true      -- Put new windows below the current one
+opt.splitkeep = "cursor"   -- Keep cursor in the same position when splitting
+
+-- Miscellaneous
+opt.mouse = ""             -- Disable mouse support
+opt.list = false           -- Don't show hidden characters (tabs, EOL, etc.)
+
