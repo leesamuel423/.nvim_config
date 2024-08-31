@@ -90,32 +90,26 @@ function M.config()
           fallback()
           -- require("neotab").tabout()
         end
-      end, {
-        "i",
-        "s",
-      }),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
-        else
-          fallback()
-        end
-      end, {
-        "i",
-        "s",
-      }),
+      end, { "i", "s" }),
+      ["<CR>"] = cmp.mapping({
+         i = function(fallback)
+           if cmp.visible() and cmp.get_active_entry() then
+             cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+           else
+             fallback()
+           end
+         end,
+         s = cmp.mapping.confirm({ select = true }),
+         c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+       }),
     },
     sources = {
-      { name = "nvim_lsp", priority = 500},
-      { name = "copilot" },
-      { name = "path"},
-      { name = "luasnip", priority = 1000},
-      { name = "buffer"},
-      { name = "nvim_lua" },
-      { name = "calc" },
-      { name = "emoji" },
+      { name = "luasnip", priority = 1000 },
+      { name = "nvim_lsp", priority = 900 },
+      { name = "nvim_lua", priority = 800 },
+      { name = "path", priority = 700 },
+      { name = "buffer", priority = 600 },
+      { name = "emoji", priority = 400 }
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
@@ -131,7 +125,7 @@ function M.config()
       },
     },
     experimental = {
-      ghost_text = false,
+      ghost_text = true,
     },
   }
 end

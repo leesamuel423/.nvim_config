@@ -15,9 +15,6 @@ require("lazy").setup{
   spec = {
     LAZY_PLUGIN_SPEC
   },
-  -- install = {
-  --   colorscheme = { "solarized-osaka" },
-  -- },
   ui = {
     border = "rounded",
   },

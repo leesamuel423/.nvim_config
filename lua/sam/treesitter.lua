@@ -1,9 +1,14 @@
-local M = {
+return {
+  {
     "nvim-treesitter/nvim-treesitter",
-    "nvim-treesitter/playground",
-    build = function()
-        require("nvim-treesitter.install").update({ with_sync = true })()
-    end,
+    build = ":TSUpdate",
+    config = function()
+      local config = require("nvim-treesitter.configs")
+      config.setup({
+        auto_install = true,
+        highlight = { enable = true },
+        indent = { enable = true },
+      })
+    end
+  }
 }
-
-return { M }
