@@ -12,12 +12,16 @@ function M.config()
     "cssls",
     "html",
     "eslint",
+    "tailwindcss",
     "tsserver",
     "pyright",
+    "ruff",
     "bashls",
     "jsonls",
     "jdtls",
     "yamlls",
+    "clangd",
+    "denols"
   }
 
   require("mason").setup {
@@ -29,6 +33,7 @@ function M.config()
   require("mason-lspconfig").setup {
     ensure_installed = servers,
   }
+
 end
 
 return M
