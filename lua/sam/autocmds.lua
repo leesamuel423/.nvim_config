@@ -1,6 +1,15 @@
+-- Highlight when yanking (copying) text
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   callback = function()
-    vim.cmd "set formatoptions-=cro"
+    vim.cmd("set formatoptions-=cro")
   end,
 })
 
@@ -21,35 +30,35 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "",
   },
   callback = function()
-    vim.cmd [[
+    vim.cmd([[
       nnoremap <silent> <buffer> q :close<CR>
       set nobuflisted
-    ]]
+    ]])
   end,
 })
 
 vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
   callback = function()
-    vim.cmd "quit"
+    vim.cmd("quit")
   end,
 })
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   callback = function()
-    vim.cmd "tabdo wincmd ="
+    vim.cmd("tabdo wincmd =")
   end,
 })
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   pattern = { "*" },
   callback = function()
-    vim.cmd "checktime"
+    vim.cmd("checktime")
   end,
 })
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
-    vim.highlight.on_yank { higroup = "Visual", timeout = 40 }
+    vim.highlight.on_yank({ higroup = "Visual", timeout = 40 })
   end,
 })
 
@@ -70,7 +79,7 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
     if luasnip.expand_or_jumpable() then
       -- ask maintainer for option to make this silent
       -- luasnip.unlink_current()
-      vim.cmd [[silent! lua require("luasnip").unlink_current()]]
+      vim.cmd([[silent! lua require("luasnip").unlink_current()]])
     end
   end,
 })

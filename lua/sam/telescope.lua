@@ -10,23 +10,27 @@ return {
       require("telescope").setup({
         pickers = {
           find_files = {
-            hidden = true,
             theme = "ivy",
           },
         },
-        extensions = {
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown({}),
-          },
-        },
+        -- extensions = {
+        --   ["ui-select"] = {
+        --     require("telescope.themes").get_dropdown({}),
+        --   },
+        -- },
 
       })
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
       vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
-      vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
+      vim.keymap.set("n", "<space>fh", builtin.help_tags)
+      vim.keymap.set("n", "<space>fd", builtin.find_files)
+      vim.keymap.set("n", "<space>en", function()
+        builtin.find_files {
+          cwd = vim.fn.stdpath("config")
+        }
+      end)
 
-      require("telescope").load_extension("ui-select")
+      -- require("telescope").load_extension("ui-select")
     end,
   },
 }
